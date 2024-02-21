@@ -297,7 +297,3 @@ il codice XAML sottostante è tutta la parte grafica del sito, nonostante ci sia
 </Window>
 ~~~
 
-
-
-~~~C#
-~~~v
