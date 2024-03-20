@@ -25,7 +25,7 @@ namespace Gelati
         }
 
         ListGelati Gelati;
-        ListIngredienti Ingredienti;
+        Ingredienti ingredienti;
 
 
 
@@ -43,17 +43,13 @@ namespace Gelati
 
                 ///////////////////////////////////////////////////////////////////////////////////////LEGGO I CONTATTI
 
-                Ingredienti = new ListIngredienti("Ingredienti.csv");
+                //Ingredienti = new Ingredienti("Ingredienti.csv");
+                ingredienti = new Ingredienti("Ingredienti.csv");
             }
             catch (Exception err)
             {
                 MessageBox.Show($" NUH UH\n + {err.Message} \n  alla riga {idx}");
             }
-        }
-
-        private void dgGelati_LoadingRow(object sender, DataGridRowEventArgs e)
-        {
-
         }
 
         private void dgGelati_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -64,18 +60,16 @@ namespace Gelati
             {
                 StatusBar.Text = $"gelato selezionato: {p.Nome} {p.Prezzo}";
 
+                List<Ingrediente> ingredinti = new List<Ingrediente>();
 
-                List<Ingrediente> c = new List<Ingrediente>();
-
-                foreach (var item in Ingredienti)
+                foreach (var item in ingredienti)
                 {
                     if (item.IdPersona == p.Id)
                     {
-                        c.Add(item);
+                        ingredinti.Add(item);
                     }
                 }
-
-                DgIngredienti.ItemsSource = c;
+                DgIngredienti.ItemsSource = ingredinti;
             }
         }
     }

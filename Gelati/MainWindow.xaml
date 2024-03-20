@@ -33,7 +33,6 @@
                 <Button Height="35" Width="90">P4</Button>
             </StackPanel>
             <DataGrid x:Name="dgGelati" 
-                  LoadingRow="dgGelati_LoadingRow" 
                   Grid.Row="1" 
                   SelectionChanged="dgGelati_SelectionChanged">
 
@@ -52,7 +51,16 @@
             </Grid.RowDefinitions>
 
             <Rectangle Fill="green" Grid.Row="0"></Rectangle>
-            <DataGrid x:Name="DgIngredienti" Grid.Row="1" ></DataGrid>
+            <DataGrid x:Name="DgIngredienti" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="idIngrediente" Binding="{Binding IdPersona}" />
+                    <DataGridTextColumn Header="Tipo" Binding="{Binding tipo}" Visibility="Visible" />
+                    <DataGridTextColumn Header="Quantità" Binding="{Binding Valore}" Visibility="Visible" />
+                    <DataGridTextColumn Header="Calorie" Binding="{Binding Panna}" Visibility="Visible" />
+                    <DataGridTextColumn Header="Colorante" Binding="{Binding Colorante}" Visibility="Visible" />
+                    <DataGridTextColumn Header="Lattosio" Binding="{Binding Latte}" Visibility="Visible" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </Window>
